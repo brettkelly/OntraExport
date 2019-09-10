@@ -74,12 +74,12 @@ def buildParser():
     p.add_argument('--appid', dest='appid', required=True)
     p.add_argument('--max', dest='maxcount', 
             help='Total number of messages to retrieve', default=600)
-    p.add_argument('--verbose', dest='verbose', 
+    p.add_argument('--verbose', action='store_true', 
             default=False, help='Add lots of output you probably don\'t want')
     return p
 
 def retrieveMessageObjects(appid, apikey, msgStart, msgCount, verbose):
-    "Connect to the Ontraport API and download all the messages up to --max"
+    "Connect to the Ontraport API and download [msgCount] messages"
     u = API_BASE_URL + 'Messages?'
     u += 'start='+str(msgStart)
     u += '&range='+str(msgCount)
